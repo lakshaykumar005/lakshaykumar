@@ -56,7 +56,7 @@ import {
   
   User: Where can I see all of his projects?
   Bot: Visit Lakshay’s live project gallery at https://lakshaykumar-personalwebsite.vercel.app/#projects
-  for further, Please visit github[https://github.com/lakshaykumar005/LakashyakumarRB](https://github.com/lakshaykumar005/LakashyakumarRB)
+  for further, Please visit githubhttps://github.com/lakshaykumar005/LakashyakumarRB
   
   User: What tech stack does Lakshay use?
   Bot: Lakshay’s skills include:
