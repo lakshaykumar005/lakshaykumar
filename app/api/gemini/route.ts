@@ -18,7 +18,7 @@ import {
       },
     ];
     const config = {
-      temperature: 1.75,
+      temperature: 1.0,
       thinkingConfig: {
         thinkingBudget: -1,
       },
@@ -133,17 +133,15 @@ import {
       },
     ];
   
-    const stream = await ai.models.generateContentStream({
+    const response = await ai.models.generateContent({
         model,
         config,
         contents,
       });
-      let text = "";
-      for await (const chunk of stream) {
-        text += chunk.text; // or check the actual property name
-      }
+    
+      // Extract the text from the response
+      console.log("Gemini response:", response);
 
-  return NextResponse.json({ text });
-  }
-  
-  
+      const text = response.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
+      return NextResponse.json({ text });
+    } 

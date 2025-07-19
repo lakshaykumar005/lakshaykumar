@@ -5,37 +5,53 @@ interface ChatbotWindowProps {
   onClose: () => void
 }
 
+function LoadingDots() {
+  return (
+    <span className="inline-block text-blue-600 animate-pulse">Lakshay's Bot is typing<span className="dot-1">.</span><span className="dot-2">.</span><span className="dot-3">.</span></span>
+  )
+}
+
 export function ChatbotWindow({ onClose }: ChatbotWindowProps) {
   const [messages, setMessages] = useState([
     { from: "bot", text: "Hi! How can I help you today?" },
   ])
   const [input, setInput] = useState("")
+  const [loading, setLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+
   async function fetchGeminiResponse(message: string): Promise<string> {
     const res = await fetch("/api/gemini", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message }),
-    });
-    const data = await res.json();
-    return data.text;
+    })
+    const data = await res.json()
+    return data.text
   }
 
   const handleSend = async () => {
     if (!input.trim()) return
+    setMessages((msgs) => [...msgs, { from: "user", text: input }])
+    setInput("")
+    setLoading(true)
+    setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }, 100)
+    const aiText = await fetchGeminiResponse(input)
+    setLoading(false)
     setMessages((msgs) => [
       ...msgs,
-      { from: "user", text: input },
+      { from: "bot", text: aiText },
     ])
-    setInput("");
-    const aiText = await fetchGeminiResponse(input);
-    setMessages((msgs) => [...msgs, { from: "user", text: input }, { from: "bot", text: aiText }]);
+    setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }, 100)
   }
 
   return (
     <div className="fixed z-50 bottom-24 right-6 w-80 max-w-[95vw] bg-white rounded-xl shadow-2xl border border-blue-100 flex flex-col overflow-hidden animate-fade-in">
       <div className="flex items-center justify-between px-4 py-3 bg-blue-600 text-white">
-        <span className="font-semibold">Lakshay's Bot</span>
+        <span className="font-semibold">AI Chatbot</span>
         <button onClick={onClose} aria-label="Close chat" className="hover:text-blue-200">
           <X className="w-5 h-5" />
         </button>
@@ -61,6 +77,13 @@ export function ChatbotWindow({ onClose }: ChatbotWindowProps) {
             </span>
           </div>
         ))}
+        {loading && (
+          <div className="text-left">
+            <span className="inline-block bg-white border border-blue-200 text-blue-900 rounded-lg px-3 py-1 text-sm">
+              <LoadingDots />
+            </span>
+          </div>
+        )}
         <div ref={messagesEndRef} />
       </div>
       <form
@@ -81,10 +104,11 @@ export function ChatbotWindow({ onClose }: ChatbotWindowProps) {
           type="submit"
           className="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-2 transition-all duration-200"
           aria-label="Send message"
+          disabled={loading}
         >
           <Send className="w-4 h-4" />
         </button>
       </form>
     </div>
   )
-} 
+}
