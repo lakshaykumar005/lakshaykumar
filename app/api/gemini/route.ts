@@ -55,7 +55,7 @@ import {
   4. **Morph AI Website** – AI-powered insurance site: [Visit](https://gromo-morph.vercel.app)
   
   User: Where can I see all of his projects?
-  Bot: Visit Lakshay’s live project gallery at [https://lakshaykumar-personalwebsite.vercel.app/#projects](https://lakshaykumar-personalwebsite.vercel.app/#projects)
+  Bot: Visit Lakshay’s live project gallery at https://lakshaykumar-personalwebsite.vercel.app/#projects
   for further, Please visit github[https://github.com/lakshaykumar005/LakashyakumarRB](https://github.com/lakshaykumar005/LakashyakumarRB)
   
   User: What tech stack does Lakshay use?
@@ -71,19 +71,19 @@ import {
   Bot: Lakshay ranked in the top 10 at a national-level fintech hackathon. He's also worked with AI tools like Google AI Studio and Vapi AI.
   
   User: Where can I contact Lakshay?
-  Bot: You can reach Lakshay on his contact page: [https://lakshaykumar-personalwebsite.vercel.app/#contact](https://lakshaykumar-personalwebsite.vercel.app/#contact)
+  Bot: You can reach Lakshay on his contact page: https://lakshaykumar-personalwebsite.vercel.app/#contact
   
   User: Show me Lakshay's portfolio.
-  Bot: You can check his project portfolio at [https://lakshaykumar-personalwebsite.vercel.app](https://lakshaykumar-personalwebsite.vercel.app)
+  Bot: You can check his project portfolio at https://lakshaykumar-personalwebsite.vercel.app
   
   User: Where can I see testimonials or achievements?
-  Bot: Head over to [https://lakshaykumar-personalwebsite.app/#accomplishments](https://lakshaykumar-personalwebsite.vercel.app/#accomplishments) to see more about his background and recognitions.
+  Bot: Head over to https://lakshaykumar-personalwebsite.app/#accomplishments to see more about his background and recognitions.
   
   User: Who is Lakshay Kumar?
   Bot: Lakshay Kumar is a Computer Science student, full-stack web developer, and the founder of Factlink. He's passionate about building scalable apps using technologies like React, Next.js, Node.js, and AI tools.
   
   User: Where can I contact Lakshay?
-  Bot: You can reach Lakshay through his [Contact Page](https://lakshaykumar-personalwebsite.vercel.app/#contact) or email him at lakshaykumarbabu@gmail.com. You may also call him at +91 7305418154.
+  Bot: You can reach Lakshay through his [Contact Page]https://lakshaykumar-personalwebsite.vercel.app/#contact or email him at lakshaykumarbabu@gmail.com. You may also call him at +91 7305418154.
   
   User: What's Lakshay’s GitHub profile?
   Bot: You can find Lakshay's open-source projects on [GitHub](https://github.com/lakshaykumar005/LakashyakumarRB).
@@ -92,7 +92,7 @@ import {
   Bot: Yes! Here's Lakshay's [LinkedIn](https://www.linkedin.com/in/lakshai-kumar-1b5a53303) profile.
   
   User: Where can I see Lakshay’s portfolio or projects?
-  Bot: You can explore Lakshay's projects on the [Projects Page](https://lakshaykumar-personalwebsite.vercel.app/#projects) of his website.
+  Bot: You can explore Lakshay's projects on the [Projects Page]https://lakshaykumar-personalwebsite.vercel.app/#projects of his website.
   
   User: What are his achievements?
   Bot: Lakshay participated in national-level hackathons like **Finarva 25** and ranked in the top 10. You can read more on the [Accomplishments Section](https://lakshaykumar-personalwebsite.vercel.app/#accomplishments).
@@ -104,20 +104,20 @@ import {
   Bot: Lakshay Kumar is based in Chennai, Tamil Nadu, India.
   
   User: Can I see his resume?
-  Bot: Lakshay’s resume is featured on the [contact Page](https://lakshaykumar-personalwebsite.vercel.app/#contact). You can also reach out via his [resume page](https://drive.google.com/file/d/1OGUBTiYhn83lIlWuf5gmoCGmG0j1LtE3/view) to request it.
+  Bot: Lakshay’s resume is featured on the [contact Page]https://lakshaykumar-personalwebsite.vercel.app/#contact. You can also reach out via his [resume page](https://drive.google.com/file/d/1OGUBTiYhn83lIlWuf5gmoCGmG0j1LtE3/view) to request it.
   
   User: What about his skills?
-  Bot: Head over to [https://lakshaykumar-personalwebsite.app/#skills](https://lakshaykumar-personalwebsite.vercel.app/#skills) to see more about his Tech stack he know.
+  Bot: Head over to https://lakshaykumar-personalwebsite.app/#skills to see more about his Tech stack he know.
   
   User: What about his education?
   Bot: He is currently pursuing B.E. in Computer Science at Sri Venkateswara College of Engineering (2022–2026) with a CGPA of 7.5. He previously studied at Velammal Vidyashram CBSE, Surapet.
-  Head over to [https://lakshaykumar-personalwebsite.app/#education](https://lakshaykumar-personalwebsite.vercel.app/#education) to know about him more.
+  Head over to https://lakshaykumar-personalwebsite.app/#education to know about him more.
   
   User: What internships has Lakshay done?
   Bot: Lakshay has interned at:
   1. **TI Clean Mobility Pvt. Ltd.** – Focused on database design and Power BI dashboards.
   2. **8Queens Software Technologies Pvt. Ltd.** – Worked on cloud architecture and scalable deployments.
-  Head over to [https://lakshaykumar-personalwebsite.app/#experience](https://lakshaykumar-personalwebsite.vercel.app/#experience) to know about him more.`,
+  Head over to https://lakshaykumar-personalwebsite.app/#experience to know about him more.`,
           }
       ],
     };

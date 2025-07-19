@@ -20,33 +20,46 @@ export function ChatbotWindow({ onClose }: ChatbotWindowProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   async function fetchGeminiResponse(message: string): Promise<string> {
-    const res = await fetch("/api/gemini", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message }),
-    })
-    const data = await res.json()
-    return data.text
+    try {
+      const res = await fetch("/api/gemini", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message }),
+      })
+      if (!res.ok) {
+        return "Sorry, there was a problem contacting Lakshay's Bot. Please try again later."
+      }
+      const data = await res.json()
+      return data.text
+    } catch (err) {
+      return "Sorry, there was a problem processing the response. Please try again later."
+    }
   }
 
   const handleSend = async () => {
-    if (!input.trim()) return
-    setMessages((msgs) => [...msgs, { from: "user", text: input }])
-    setInput("")
-    setLoading(true)
+    if (!input.trim()) return;
+    setMessages((msgs) => [...msgs, { from: "user", text: input }]);
+    setInput("");
+    setLoading(true);
     setTimeout(() => {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-    }, 100)
-    const aiText = await fetchGeminiResponse(input)
-    setLoading(false)
-    setMessages((msgs) => [
-      ...msgs,
-      { from: "bot", text: aiText },
-    ])
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+    const aiText = await fetchGeminiResponse(input);
+  
+    // Regex to find the first URL in the response
+    const urlMatch = aiText.match(/https?:\/\/[^\s)]+/);
+    if (urlMatch) {
+      window.location.href = urlMatch[0];
+      setLoading(false);
+      return;
+    }
+  
+    setMessages((msgs) => [...msgs, { from: "bot", text: aiText }]);
+    setLoading(false);
     setTimeout(() => {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-    }, 100)
-  }
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  };
 
   return (
     <div className="fixed z-50 bottom-24 right-6 w-80 max-w-[95vw] bg-white rounded-xl shadow-2xl border border-blue-100 flex flex-col overflow-hidden animate-fade-in">
@@ -80,7 +93,12 @@ export function ChatbotWindow({ onClose }: ChatbotWindowProps) {
         {loading && (
           <div className="text-left">
             <span className="inline-block bg-white border border-blue-200 text-blue-900 rounded-lg px-3 py-1 text-sm">
-              <LoadingDots />
+              <span className="flex items-center gap-1">
+                <span className="animate-bounce" style={{ animationDelay: '0ms' }}>.</span>
+                <span className="animate-bounce" style={{ animationDelay: '100ms' }}>.</span>
+                <span className="animate-bounce" style={{ animationDelay: '200ms' }}>.</span>
+                <span className="ml-2 text-xs text-blue-400">Lakshay's Bot is typing...</span>
+              </span>
             </span>
           </div>
         )}
@@ -99,6 +117,7 @@ export function ChatbotWindow({ onClose }: ChatbotWindowProps) {
           placeholder="Type your message..."
           value={input}
           onChange={e => setInput(e.target.value)}
+          disabled={loading}
         />
         <button
           type="submit"
