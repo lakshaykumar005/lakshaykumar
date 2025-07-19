@@ -27,6 +27,9 @@ import { AnimatedSection } from "@/components/animated-section"
 import { FloatingElements } from "@/components/floating-elements"
 import { AnimatedCounter } from "@/components/animated-counter"
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, bounceIn } from "@/lib/animations"
+import React from "react"
+import { ChatbotLauncher } from "@/components/chatbot-launcher"
+import { ChatbotWindow } from "@/components/chatbot-window"
 
 export default function Portfolio() {
   const skills = {
@@ -70,9 +73,11 @@ export default function Portfolio() {
 
   const stats = [
     { label: "Projects Completed", value: 3, suffix: "+" },
-    { label: "Technologies Mastered", value: 15, suffix: "+" },
+    { label: "Technologies Mastered", value: 9, suffix: "+" },
     { label: "CGPA", value: 7.5, suffix: "" },
   ]
+
+  const [chatOpen, setChatOpen] = React.useState(false)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 overflow-x-hidden">
@@ -570,7 +575,7 @@ export default function Portfolio() {
 
             {/* Contact Info Cards */}
             <motion.div
-              className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto"
+              className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 max-w-6xl mx-auto"
               variants={staggerContainer}
               initial="initial"
               whileInView="animate"
@@ -637,10 +642,34 @@ export default function Portfolio() {
                   </CardContent>
                 </Card>
               </motion.div>
+              <motion.div
+                variants={bounceIn}
+                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Card className="bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-300 h-full">
+                  <CardContent className="p-6 text-center">
+                    <Link
+                      href="https://drive.google.com/file/d/1OGUBTiYhn83lIlWuf5gmoCGmG0j1LtE3/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block h-full"
+                    >
+                      <Github className="mx-auto mb-4 h-8 w-8" />
+                      <p className="font-semibold">Resume</p>
+                      <p className="text-sm text-blue-100">About Me</p>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </motion.div>
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Floating Chatbot Integration */}
+      {chatOpen && <ChatbotWindow onClose={() => setChatOpen(false)} />}
+      <ChatbotLauncher onClick={() => setChatOpen((open) => !open)} />
     </div>
   )
 }

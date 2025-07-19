@@ -151,32 +151,30 @@ export function ContactForm() {
                 )}
               </motion.div>
 
-              <motion.div variants={fadeInUp}>
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-blue-600 hover:bg-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                  disabled={isPending}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {isPending ? (
-                    <>
-                      <motion.div
-                        className="mr-2 h-4 w-4 rounded-full border-2 border-white border-t-transparent"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                      />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="mr-2 h-4 w-4" />
-                      Send Message
-                    </>
-                  )}
-                </Button>
-              </motion.div>
+              <motion.div variants={fadeInUp} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-blue-600 hover:bg-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    disabled={isPending}
+                  >
+                    {isPending ? (
+                      <>
+                        <motion.div
+                          className="mr-2 h-4 w-4 rounded-full border-2 border-white border-t-transparent"
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                        />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="mr-2 h-4 w-4" />
+                        Send Message
+                      </>
+                    )}
+                  </Button>
+                </motion.div>
             </motion.form>
 
             <motion.div className="mt-6 text-center text-sm text-gray-500" variants={fadeInUp}>
