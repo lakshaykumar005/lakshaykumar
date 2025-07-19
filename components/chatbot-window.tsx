@@ -11,18 +11,25 @@ export function ChatbotWindow({ onClose }: ChatbotWindowProps) {
   ])
   const [input, setInput] = useState("")
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  async function fetchGeminiResponse(message: string): Promise<string> {
+    const res = await fetch("/api/gemini", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message }),
+    });
+    const data = await res.json();
+    return data.text;
+  }
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return
     setMessages((msgs) => [
       ...msgs,
       { from: "user", text: input },
-      { from: "bot", text: "(AI response placeholder)" },
     ])
-    setInput("")
-    setTimeout(() => {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-    }, 100)
+    setInput("");
+    const aiText = await fetchGeminiResponse(input);
+    setMessages((msgs) => [...msgs, { from: "user", text: input }, { from: "bot", text: aiText }]);
   }
 
   return (

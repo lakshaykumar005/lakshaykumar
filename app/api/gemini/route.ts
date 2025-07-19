@@ -1,12 +1,13 @@
 // To run this code you need to install the following dependencies:
 // npm install @google/genai mime
 // npm install -D @types/node
-
+import { NextRequest, NextResponse } from "next/server";
 import {
     GoogleGenAI,
   } from '@google/genai';
   
-  async function main() {
+  export async function POST(req: NextRequest)  {
+    const { message } = await req.json();
     const ai = new GoogleGenAI({
       apiKey: process.env.GEMINI_API_KEY,
     });
@@ -126,22 +127,23 @@ import {
         role: 'user',
         parts: [
           {
-            text: `INSERT_INPUT_HERE`,
+            text: message,
           },
         ],
       },
     ];
   
-    const response = await ai.models.generateContentStream({
-      model,
-      config,
-      contents,
-    });
-    let fileIndex = 0;
-    for await (const chunk of response) {
-      console.log(chunk.text);
-    }
+    const stream = await ai.models.generateContentStream({
+        model,
+        config,
+        contents,
+      });
+      let text = "";
+      for await (const chunk of stream) {
+        text += chunk.text; // or check the actual property name
+      }
+
+  return NextResponse.json({ text });
   }
   
-  main();
   
