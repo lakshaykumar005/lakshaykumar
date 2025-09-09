@@ -31,8 +31,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://lakshaykumar.vercel.app/LOGO_backup.png',
-        width: 1200,
-        height: 630,
+        width: 1024,
+        height: 1024,
         alt: 'Lakshay Kumar - Full Stack Developer',
         type: 'image/png',
       },
