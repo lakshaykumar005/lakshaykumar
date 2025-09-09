@@ -26,10 +26,9 @@ import { ContactForm } from "@/components/contact-form"
 import { AnimatedSection } from "@/components/animated-section"
 import { FloatingElements } from "@/components/floating-elements"
 import { AnimatedCounter } from "@/components/animated-counter"
+import { Models3D } from "@/components/3d-models"
 import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, scaleIn, bounceIn } from "@/lib/animations"
 import React from "react"
-import { ChatbotLauncher } from "@/components/chatbot-launcher"
-import { ChatbotWindow } from "@/components/chatbot-window"
 
 export default function Portfolio() {
   const skills = {
@@ -74,16 +73,16 @@ export default function Portfolio() {
   const stats = [
     { label: "Projects Completed", value: 3, suffix: "+" },
     { label: "Technologies Mastered", value: 9, suffix: "+" },
-    { label: "CGPA", value: 7.5, suffix: "" },
+    { label: "CGPA", value: 7.7, suffix: "" },
   ]
 
-  const [chatOpen, setChatOpen] = React.useState(false)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 text-white min-h-screen flex items-center">
         <FloatingElements />
+        <Models3D />
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative container mx-auto px-4 text-center">
           <motion.div className="mx-auto max-w-4xl" variants={staggerContainer} initial="initial" animate="animate">
@@ -213,7 +212,7 @@ export default function Portfolio() {
                   title: "B.E. Computer Science and Engineering",
                   institution: "Sri Venkateswara College Of Engineering",
                   period: "2022 - 2026",
-                  grade: "CGPA: 7.5",
+                  grade: "CGPA: 7.7",
                   color: "blue",
                 },
                 {
@@ -278,7 +277,7 @@ export default function Portfolio() {
                 {
                   title: "Intern",
                   company: "TI CLEAN MOBILITY PVT. LTD.",
-                  period: "Jun 2024 - Jul 2024",
+                  period: "Dec 2023 - Jul 2024",
                   tasks: [
                     "Managed SQL Server databases, including database design, optimization, and maintenance",
                     "Developed Power BI dashboards to visualize data trends and business insights",
@@ -288,10 +287,19 @@ export default function Portfolio() {
                 {
                   title: "Cloud Computing Intern",
                   company: "8Queens Software Technologies Pvt. Ltd.",
-                  period: "Jun 2024 - Jul 2024",
+                  period: "Aug 2024 - Nov 2024",
                   tasks: [
                     "Completed internship focused on cloud infrastructure and services",
                     "Gained hands-on experience in cloud architecture, virtualization, and deploying scalable cloud solutions",
+                  ],
+                  color: "green",
+                },
+                {
+                  title: "Full Stack Developer",
+                  company: "Dreampi.in",
+                  period: "Feb 2025 - present",
+                  tasks: [
+                    "Developed and deployed 4 complex product-based websites(Till Now), handling both frontend and backend. Built scalable with modern frameworks and optimized system performance.",
                   ],
                   color: "green",
                 },
@@ -541,9 +549,11 @@ export default function Portfolio() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white relative overflow-hidden"
+        className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 text-white relative overflow-hidden"
       >
         <FloatingElements />
+        <Models3D />
+        <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection>
             <div className="text-center mb-12">
@@ -630,7 +640,7 @@ export default function Portfolio() {
                 <Card className="bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-300 h-full">
                   <CardContent className="p-6 text-center">
                     <Link
-                      href="https://github.com/lakshaykumar005/LakashyakumarRB"
+                      href="https://github.com/lakshaykumar005"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block h-full"
@@ -650,7 +660,7 @@ export default function Portfolio() {
                 <Card className="bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-300 h-full">
                   <CardContent className="p-6 text-center">
                     <Link
-                      href="https://drive.google.com/file/d/1OGUBTiYhn83lIlWuf5gmoCGmG0j1LtE3/view?usp=sharing"
+                      href="https://drive.google.com/file/d/1HasZ6qK94gMRNulNjBRFkNvwC3LawKWK/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block h-full"
@@ -667,9 +677,6 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Floating Chatbot Integration */}
-      {chatOpen && <ChatbotWindow onClose={() => setChatOpen(false)} />}
-      <ChatbotLauncher onClick={() => setChatOpen((open) => !open)} />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 "use server"
 
 import { z } from "zod"
+import { Resend } from "resend"
 
 // Contact form schema for validation
 const contactSchema = z.object({
@@ -40,59 +41,75 @@ export async function submitContactForm(prevState: ContactFormState, formData: F
 
     const { name, email, subject, message } = validatedFields.data
 
-    // Here you would integrate with your email service
-    // For example, using Resend, Nodemailer, or SendGrid
+    // Check if API key exists
+    if (!process.env.RESEND_API_KEY) {
+      throw new Error("RESEND_API_KEY is not configured")
+    }
 
-    // Simulate email sending (replace with actual email service)
-    await simulateEmailSending({
-      to: "lakashyakumar@example.com", // Your email
-      from: email,
+    // Initialize Resend with API key
+    const resend = new Resend(process.env.RESEND_API_KEY)
+
+    // Send email using Resend
+    // Note: For free tier, we can only send to the verified email address
+    const result = await resend.emails.send({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: ["2022cs0401@svce.ac.in"], // Use your verified email address
       subject: `Portfolio Contact: ${subject}`,
       html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+          <h2 style="color: #2563eb; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">
+            New Contact Form Submission
+          </h2>
+          <div style="background-color: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <p style="margin: 10px 0;"><strong style="color: #374151;">Name:</strong> ${name}</p>
+            <p style="margin: 10px 0;"><strong style="color: #374151;">Email:</strong> ${email}</p>
+            <p style="margin: 10px 0;"><strong style="color: #374151;">Subject:</strong> ${subject}</p>
+          </div>
+          <div style="background-color: #ffffff; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px;">
+            <h3 style="color: #374151; margin-top: 0;">Message:</h3>
+            <p style="color: #4b5563; line-height: 1.6; white-space: pre-wrap;">${message}</p>
+          </div>
+          <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 14px;">
+            <p>This message was sent from your portfolio contact form.</p>
+            <p><strong>Reply to:</strong> ${email}</p>
+            <p>You can reply directly to this email to respond to ${name}.</p>
+          </div>
+        </div>
       `,
+      replyTo: email,
     })
+
+    // Log the result for debugging
+    console.log("Email sent successfully:", result)
 
     return {
       success: true,
     }
   } catch (error) {
     console.error("Contact form error:", error)
+    
+    // Provide more specific error messages
+    if (error instanceof Error) {
+      if (error.message.includes("RESEND_API_KEY")) {
+        return {
+          error: "Email service is not configured. Please contact the administrator.",
+        }
+      }
+      if (error.message.includes("Invalid API key")) {
+        return {
+          error: "Email service configuration error. Please try again later.",
+        }
+      }
+      if (error.message.includes("rate limit")) {
+        return {
+          error: "Too many requests. Please wait a moment and try again.",
+        }
+      }
+    }
+    
     return {
       error: "Failed to send message. Please try again later.",
     }
   }
 }
 
-// Simulate email sending - replace with actual email service
-async function simulateEmailSending(emailData: any) {
-  // Simulate network delay
-  await new Promise((resolve) => setTimeout(resolve, 1000))
-
-  // In a real implementation, you would use:
-  // - Resend: https://resend.com/docs
-  // - SendGrid: https://sendgrid.com/docs
-  // - Nodemailer: https://nodemailer.com/
-  // - Or any other email service
-
-  console.log("Email would be sent:", emailData)
-
-  // Uncomment and configure when using a real email service:
-  /*
-  import { Resend } from 'resend'
-  const resend = new Resend(process.env.RESEND_API_KEY)
-  
-  await resend.emails.send({
-    from: 'contact@yourdomain.com',
-    to: emailData.to,
-    subject: emailData.subject,
-    html: emailData.html,
-    reply_to: emailData.from,
-  })
-  */
-}
