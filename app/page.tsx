@@ -87,7 +87,7 @@ export default function Portfolio() {
         <div className="relative container mx-auto px-4 text-center">
           <motion.div className="mx-auto max-w-4xl" variants={staggerContainer} initial="initial" animate="animate">
             <motion.h1 className="mb-6 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl" variants={fadeInUp}>
-              Lakshai Kumar R.B
+              Lakshay Kumar R. B.
             </motion.h1>
             <motion.p className="mb-8 text-xl text-blue-100 sm:text-2xl" variants={fadeInUp}>
               Computer Science Engineering Student & Full Stack Developer
