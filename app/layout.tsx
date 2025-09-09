@@ -55,6 +55,7 @@ export const metadata: Metadata = {
     'theme-color': '#2563eb',
     'msapplication-TileColor': '#2563eb',
     'msapplication-config': '/browserconfig.xml',
+    'fb:app_id': '123456789', // Placeholder - replace with your actual Facebook App ID
   },
 }
 
