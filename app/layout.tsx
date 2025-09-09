@@ -30,11 +30,11 @@ export const metadata: Metadata = {
     description: 'Passionate full stack web developer with expertise in Python, Java, JavaScript, React, Node.js, Flutter, and AI technologies. View my portfolio and get in touch!',
     images: [
       {
-        url: 'https://lakshaykumar.vercel.app/LOGO_optimized.jpg',
+        url: 'https://lakshaykumar.vercel.app/LOGO_backup.png',
         width: 1200,
         height: 630,
         alt: 'Lakshay Kumar - Full Stack Developer',
-        type: 'image/jpeg',
+        type: 'image/png',
       },
     ],
   },
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Lakshay Kumar - Full Stack Developer',
     description: 'Passionate full stack web developer with expertise in Python, Java, JavaScript, React, Node.js, Flutter, and AI technologies.',
-    images: ['https://lakshaykumar.vercel.app/LOGO_optimized.jpg'],
+    images: ['https://lakshaykumar.vercel.app/LOGO_backup.png'],
     creator: '@lakshaykumar005',
   },
   icons: {
@@ -67,9 +67,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta property="fb:app_id" content="123456789" />
-        <meta property="og:image:secure_url" content="https://lakshaykumar.vercel.app/LOGO_optimized.jpg" />
-        <meta name="twitter:image:src" content="https://lakshaykumar.vercel.app/LOGO_optimized.jpg" />
-        <link rel="image_src" href="https://lakshaykumar.vercel.app/LOGO_optimized.jpg" />
+        <meta property="og:image:secure_url" content="https://lakshaykumar.vercel.app/LOGO_backup.png" />
+        <meta name="twitter:image:src" content="https://lakshaykumar.vercel.app/LOGO_backup.png" />
+        <link rel="image_src" href="https://lakshaykumar.vercel.app/LOGO_backup.png" />
       </head>
       <body>{children}</body>
     </html>
