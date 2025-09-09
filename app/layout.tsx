@@ -36,14 +36,6 @@ export const metadata: Metadata = {
         alt: 'Lakshay Kumar - Full Stack Developer',
         type: 'image/png',
       },
-      // Alternative image URLs in case the main one fails
-      {
-        url: '/LOGO.png',
-        width: 1200,
-        height: 630,
-        alt: 'Lakshay Kumar - Full Stack Developer',
-        type: 'image/png',
-      },
     ],
   },
   twitter: {
@@ -63,11 +55,6 @@ export const metadata: Metadata = {
     'theme-color': '#2563eb',
     'msapplication-TileColor': '#2563eb',
     'msapplication-config': '/browserconfig.xml',
-    // Additional Open Graph properties for better sharing
-    'og:image:secure_url': 'https://lakshaykumar.vercel.app/LOGO.png',
-    'og:image:width': '1200',
-    'og:image:height': '630',
-    'og:image:alt': 'Lakshay Kumar - Full Stack Developer',
   },
 }
 
@@ -78,22 +65,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Additional meta tags for better Open Graph support */}
-        <meta property="og:image" content="https://lakshaykumar.vercel.app/LOGO.png" />
-        <meta property="og:image:secure_url" content="https://lakshaykumar.vercel.app/LOGO.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Lakshay Kumar - Full Stack Developer" />
-        <meta property="og:image:type" content="image/png" />
-        
-        {/* Twitter specific image meta tags */}
-        <meta name="twitter:image" content="https://lakshaykumar.vercel.app/LOGO.png" />
-        <meta name="twitter:image:alt" content="Lakshay Kumar - Full Stack Developer" />
-        
-        {/* Facebook specific meta tags */}
-        <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID" />
-      </head>
       <body>{children}</body>
     </html>
   )
