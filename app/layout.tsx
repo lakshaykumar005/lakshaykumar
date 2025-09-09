@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://lakshaykumar-personalwebsite.vercel.app', // Update this with your actual domain
+    url: 'https://lakshaykumar.vercel.app', // Update this with your actual domain
     siteName: 'Lakshay Kumar Portfolio',
     title: 'Lakshay Kumar - Full Stack Developer',
     description: 'Passionate full stack web developer with expertise in Python, Java, JavaScript, React, Node.js, Flutter, and AI technologies. View my portfolio and get in touch!',
