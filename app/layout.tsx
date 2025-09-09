@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://lakshaykumar.vercel.app'),
   title: 'Lakshay Kumar - Full Stack Developer',
   description: 'Passionate full stack web developer with expertise in Python, Java, JavaScript, React, Node.js, Flutter, and AI technologies. View my portfolio and get in touch!',
   generator: 'Next.js',
@@ -23,13 +24,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://lakshaykumar.vercel.app', // Update this with your actual domain
+    url: 'https://lakshaykumar.vercel.app',
     siteName: 'Lakshay Kumar Portfolio',
     title: 'Lakshay Kumar - Full Stack Developer',
     description: 'Passionate full stack web developer with expertise in Python, Java, JavaScript, React, Node.js, Flutter, and AI technologies. View my portfolio and get in touch!',
     images: [
       {
-        url: '/LOGO.png',
+        url: 'https://lakshaykumar.vercel.app/LOGO.png',
         width: 1200,
         height: 630,
         alt: 'Lakshay Kumar - Full Stack Developer',
@@ -41,8 +42,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Lakshay Kumar - Full Stack Developer',
     description: 'Passionate full stack web developer with expertise in Python, Java, JavaScript, React, Node.js, Flutter, and AI technologies.',
-    images: ['/LOGO.png'],
-    creator: '@lakshaykumar005', // Update with your Twitter handle if you have one
+    images: ['https://lakshaykumar.vercel.app/LOGO.png'],
+    creator: '@lakshaykumar005',
   },
   icons: {
     icon: '/favicon.ico',
